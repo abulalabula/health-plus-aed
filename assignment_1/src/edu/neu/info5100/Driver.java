@@ -10,10 +10,10 @@ public class Driver {
 	public int seatsNumber;
 	public String licensePlates;//unique
 	public String ownerName;
-	public int ownerTelephoneNumbers;
+	public String ownerTelephoneNumbers;
 	public String ownerEmailAddresses;
 	public String ownerDriverLicense;
-	public int ownerSocialSecurityNumber;
+	public String ownerSocialSecurityNumber;
 	public String ownerAddress;
 	public String serviceRecords;
 	public int warrantyYear;
@@ -168,7 +168,7 @@ public class Driver {
 
 
 
-	public int getOwnerTelephoneNumbers() {
+	public String getOwnerTelephoneNumbers() {
 		return ownerTelephoneNumbers;
 	}
 
@@ -177,7 +177,7 @@ public class Driver {
 
 
 
-	public void setOwnerTelephoneNumbers(int ownerTelephoneNumbers) {
+	public void setOwnerTelephoneNumbers(String ownerTelephoneNumbers) {
 		this.ownerTelephoneNumbers = ownerTelephoneNumbers;
 	}
 
@@ -222,7 +222,7 @@ public class Driver {
 
 
 
-	public int getOwnerSocialSecurityNumber() {
+	public String getOwnerSocialSecurityNumber() {
 		return ownerSocialSecurityNumber;
 	}
 
@@ -231,7 +231,7 @@ public class Driver {
 
 
 
-	public void setOwnerSocialSecurityNumber(int ownerSocialSecurityNumber) {
+	public void setOwnerSocialSecurityNumber(String ownerSocialSecurityNumber) {
 		this.ownerSocialSecurityNumber = ownerSocialSecurityNumber;
 	}
 
