@@ -27,6 +27,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.awt.SystemColor;
@@ -298,10 +301,18 @@ public class addNewCarPanel extends JPanel {
 		table.setModel(model);
 		
 		Object[] row = new Object[4];
+		List<String> oldEngineNumber = new ArrayList<String>();
+		List<String> oldPlates = new ArrayList<String>();
 		
 		JButton btnSaveResult = new JButton("Save");
 		btnSaveResult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+//				oldSSN.add(textOwnerSocialSecurityNumber.getText());
+				boolean containEngineNumber = false;
+				containEngineNumber = oldEngineNumber.contains(textEngineNumber.getText());
+				boolean containPlates = false;
+				containPlates = oldPlates.contains(textLicensePlates.getText());
 				
 				if(Integer.parseInt(textYear.getText()) > 2022 || Integer.parseInt(textYear.getText()) < 1885) {
 					JOptionPane.showMessageDialog(null, "Wrong Format: Year",
@@ -321,21 +332,24 @@ public class addNewCarPanel extends JPanel {
 				} else if (Integer.parseInt(textWarrantyYear.getText()) < 1885) {
 					JOptionPane.showMessageDialog(null, "Wrong Format: Warranty Year",
 				               "Oops", JOptionPane.ERROR_MESSAGE); 
-				}
-				
-				
-				
-				else {
+				} else if (containPlates) {
+					JOptionPane.showMessageDialog(null, "Wrong validation: Lisence Plates",
+				               "Oops", JOptionPane.ERROR_MESSAGE); 
+				} else if (containEngineNumber) {
+					JOptionPane.showMessageDialog(null, "Wrong validation: Engine Number",
+				               "Oops", JOptionPane.ERROR_MESSAGE); 
+				} else {
+					
+					oldEngineNumber.add(textEngineNumber.getText());
+					oldPlates.add(textLicensePlates.getText());
 					row[0] = textBrand.getText();
 		            row[1] = textModel.getText();
 		            row[2] = textServiceRecords.getText();
 		            model.addRow(row);
-					JOptionPane.showMessageDialog(null, textBrand.getText() + " " + textModel.getText() + " is saved successfully!",
+					JOptionPane.showMessageDialog(null, textBrand.getText() + " " + textModel.getText() + " is saved successfully!" ,
 				               "Congratulations!!!", JOptionPane.INFORMATION_MESSAGE);
 					
 				}
-				
-				
 				
 				driver.setBrand(textBrand.getText());
 				driver.setModel(textModel.getText());
@@ -420,10 +434,6 @@ public class addNewCarPanel extends JPanel {
 //			   }
 				
 				}
-			
-				
-				
-			
 			
 			}
 		);
